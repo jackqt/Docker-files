@@ -1,0 +1,22 @@
+Web:
+  image: synctree/mediawiki
+  links:
+    - DB:mysql
+    - DBControl:phpmyadmin/phpmyadmin
+  ports:
+    - 8080:80
+  environment:
+    - MEDIAWIKI_DB_NAME=mediawiki
+DB:
+  image: mysql
+  environment:
+    - MYSQL_DATABASE=mediawiki
+    - MYSQL_ROOT_PASSWORD=root
+DBControl:
+  image: phpmyadmin/phpmyadmin
+  links:
+    - DB:mysql
+  ports:
+    - 8081:80
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
