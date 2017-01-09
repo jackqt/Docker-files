@@ -1,3 +1,8 @@
+DB:
+  image: mysql
+  environment:
+    - MYSQL_DATABASE=mediawiki
+    - MYSQL_ROOT_PASSWORD=root
 Web:
   image: synctree/mediawiki
   links:
@@ -7,11 +12,6 @@ Web:
     - 8080:80
   environment:
     - MEDIAWIKI_DB_NAME=mediawiki
-DB:
-  image: mysql
-  environment:
-    - MYSQL_DATABASE=mediawiki
-    - MYSQL_ROOT_PASSWORD=root
 DBControl:
   image: phpmyadmin/phpmyadmin
   links:
